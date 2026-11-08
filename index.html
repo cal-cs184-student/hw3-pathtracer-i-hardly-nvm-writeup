@@ -43,7 +43,18 @@
 		-->
 
 		<h2>Overview</h2>
-		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
+			
+		<p>I have implemented a basic physically based renderer.
+			It supports global illumination through importance sampling and ray tracing.
+			To speed up render times, it also utilizes bounding volume hierarchies (BVHs)
+			and adaptive sampling. Overall, this assignment was definitely the most interesting
+			to me but also the trickiest to debug. I found the recursive ray tracing used
+			in global illumination to be the most interesting portion by far with how
+			exactly indirect lighting and direct lighting is computed. As stated, this
+			assignment was quite difficult to debug since you couldn't simply walk through the code
+			to check for errors and numerical precision issues, such as using
+			floats and integers, can easily mess up your results.
+		</p>
 
 		<h2>Part 1: Ray Generation and Scene Intersection</h2>
 
@@ -512,12 +523,12 @@
 				<br>
 				<li>
 					In the case we have an intersection, we perform Russian Roulette to decide whether to return <code>L_out</code> instead
-					of recursively raytracing. I chose a probability of <code>0.4</code> for continuing and use the <code>coin_flip</code>
+					of recursively ray tracing. I chose a probability of <code>0.4</code> for continuing and use the <code>coin_flip</code>
 					to check.
 				</li>
 				<br>
 				<li>
-					At this point, we start (or continue) recursively raytracing by calling <code>at_least_one_bounce_radiance</code>
+					At this point, we start (or continue) recursively ray tracing by calling <code>at_least_one_bounce_radiance</code>
 					on our new ray and Intersection struct. We take the result of this recursive call and do a Monte Carlo estimate with it
 					by multiplying it with the reflectance of the current intersection point and the cosine of the incidence angle (computed using the dot product
 					as described in earlier sections). We divide this by the probability of the sampled direction and then divide again
@@ -788,6 +799,12 @@
 			  </tr>
 			</table>
 		</div>
+
+		<h3>Acknowledgement of AI</h3>
+
+		<p>I used an AI agent to help diagnose and debug issues whenever my code had issues, such as
+			syntax with pointers or small one-off errors.
+		</p>
 
 		</div>
 	</body>
